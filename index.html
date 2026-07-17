@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+<!-- Google Analytics (GA4) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P6HM1FFLBE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-P6HM1FFLBE');
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Guiri's | Café de especialidad y brunch en Barbate</title>
@@ -740,6 +748,25 @@ footer .fbrand{font-family:'Gliker','Baloo 2',sans-serif;font-size:1.4rem;font-w
   track.addEventListener('pointerdown', stopAuto);
   startAuto();
 })();
+</script>
+<script>
+// Seguimiento de conversiones (clics en botones clave)
+document.addEventListener('click', function(e){
+  var a = e.target.closest('a');
+  if(!a || typeof gtag !== 'function') return;
+  var href = a.getAttribute('href') || '';
+  if(href.indexOf('wa.me') > -1){
+    gtag('event', 'click_whatsapp', {event_category:'contacto', event_label:'WhatsApp tartas'});
+  } else if(href.indexOf('instagram.com') > -1){
+    gtag('event', 'click_instagram', {event_category:'social', event_label:'Instagram'});
+  } else if(href.indexOf('menu.guiribakes.es') > -1){
+    gtag('event', 'click_menu_en', {event_category:'menu', event_label:'Menu EN'});
+  } else if(href.indexOf('maps') > -1 || href.indexOf('google.com/maps') > -1){
+    gtag('event', 'click_maps', {event_category:'contacto', event_label:'Cómo llegar'});
+  } else if(href.indexOf('tel:') > -1){
+    gtag('event', 'click_telefono', {event_category:'contacto', event_label:'Teléfono'});
+  }
+}, true);
 </script>
 </body>
 </html>
